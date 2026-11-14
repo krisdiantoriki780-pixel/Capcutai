@@ -1,575 +1,470 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101525">
-<title>CapCut AI Template Studio v1.0</title>
+<title>CapCut AI Template Studio v1.1</title>
 <style>
-:root{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:#f3f6ff;background:#0c1020
-}
 *{box-sizing:border-box}
-body{margin:0}
-header{
-  padding:20px 16px;background:#141b30;
-  position:sticky;top:0;z-index:5;
-  border-bottom:1px solid #29334d
-}
-h1{font-size:19px;margin:0}
-small,.muted{color:#aab6ce}
-main{
-  max-width:900px;margin:auto;padding:16px;
-  display:grid;gap:16px
-}
-.panel{
-  background:#171f35;border:1px solid #303b57;
-  border-radius:16px;padding:16px
-}
+body{margin:0;background:#0c1020;color:#eef2ff;font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+header{padding:17px;background:#151d32;position:sticky;top:0;z-index:10;border-bottom:1px solid #35405c}
+h1{font-size:19px;margin:0 0 5px}
 h2{font-size:16px;margin:0 0 12px}
-label{
-  display:block;font-size:13px;
-  margin:10px 0 5px;color:#c8d4ec
-}
-textarea,input,select{
-  width:100%;border:1px solid #44516e;
-  background:#0e162a;color:#fff;
-  border-radius:10px;padding:12px;font:inherit
-}
-textarea{min-height:85px}
-button{
-  border:0;border-radius:10px;background:#625cf3;
-  color:white;padding:12px 14px;
-  font-weight:700;cursor:pointer
-}
-button.secondary{background:#303e5a}
-button.danger{background:#743749}
-.actions{
-  display:flex;flex-wrap:wrap;
-  gap:8px;margin-top:12px
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px
-}
-.track{margin:12px 0}
-.trackhead{
-  display:flex;justify-content:space-between;
-  align-items:center;font-size:13px;margin-bottom:6px
-}
-.segments{display:flex;gap:3px;min-height:46px}
-.segment{
-  min-width:0;flex:1;border-radius:7px;
-  padding:7px 3px;text-align:center;
-  background:#2763b8;font-size:11px;overflow:hidden
-}
-.segment.text{background:#7a47ae}
-.segment.overlay{background:#087f78}
-.segment.audio{background:#626c82}
-.segment.effect{background:#9c642f}
-.editorrow{
-  border-top:1px solid #36405a;padding:10px 0;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:8px;align-items:center
-}
-.editorrow strong{font-size:13px}
-.editorrow input[type=checkbox]{
-  width:auto;transform:scale(1.3);margin-right:8px
-}
-.editorrow input[type=number]{padding:7px}
-.editorrow .wide{grid-column:1/-1}
-.preview{
-  aspect-ratio:9/16;max-width:270px;
-  margin:0 auto;border-radius:14px;
-  background:linear-gradient(145deg,#364a6e,#172338 55%,#3d4564);
-  position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center
-}
-.preview video,.preview img{
-  width:100%;height:100%;object-fit:cover;
-  position:absolute
-}
-.previewtext{
-  z-index:2;text-align:center;font-size:23px;
-  font-weight:800;text-shadow:0 2px 8px #000;
-  max-width:90%;overflow-wrap:anywhere
-}
-.previewoverlay{
-  z-index:3;position:absolute;right:12px;
-  bottom:20px;font-size:12px;padding:8px;
-  background:#00a59a99;border-radius:8px
-}
-.note{
-  font-size:12px;line-height:1.5;color:#b4c3da
-}
-.pill{
-  display:inline-block;padding:4px 8px;
-  border-radius:30px;background:#253653;
-  font-size:11px;color:#d4dfff
-}
-input[type=file]{font-size:12px}
-footer{
-  padding:20px;text-align:center;
-  color:#aab6ce;font-size:12px
-}
-@media(min-width:760px){
-  main{grid-template-columns:1fr 1fr}
-  .full{grid-column:1/-1}
+.muted,small{color:#b0bfd7}
+main{max-width:1050px;margin:auto;padding:12px;display:grid;gap:13px}
+.panel{background:#182139;border:1px solid #34415f;border-radius:15px;padding:15px}
+label{display:block;color:#d5def0;margin:10px 0 5px;font-size:12px}
+input,textarea,select{background:#0d162a;border:1px solid #465577;border-radius:9px;color:white;padding:10px;width:100%;font:inherit}
+textarea{min-height:82px}
+input[type=checkbox]{width:auto;accent-color:#867cff}
+input[type=range]{padding:0;accent-color:#867cff}
+button{background:#6659ef;color:#fff;border:0;border-radius:9px;padding:11px 13px;font-weight:650;cursor:pointer}
+button.alt{background:#344562}
+button.warn{background:#87435a}
+.buttons{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.preview{position:relative;width:min(100%,260px);aspect-ratio:9/16;background:linear-gradient(135deg,#405c88,#161e37);border-radius:12px;overflow:hidden;margin:0 auto}
+.preview .asset{position:absolute;width:100%;height:100%;object-fit:cover;inset:0}
+.preview .overlay{position:absolute;object-fit:cover;left:60%;top:58%;width:34%;height:30%;border:2px solid #ffffff55;border-radius:7px}
+.preview .caption{position:absolute;left:7%;right:7%;top:42%;text-align:center;font-weight:800;font-size:22px;text-shadow:0 2px 8px #000;overflow-wrap:anywhere}
+.playbar{display:flex;align-items:center;gap:8px;margin-top:12px}
+.playbar input{flex:1}
+.time{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:12px}
+.track{margin:13px 0}
+.trackname{font-size:12px;margin-bottom:5px;color:#c8d4eb}
+.trackline{height:43px;background:#10192e;border:1px solid #32415f;border-radius:8px;position:relative;overflow:hidden}
+.block{position:absolute;top:4px;bottom:4px;border-radius:6px;overflow:hidden;padding:5px 3px;font-size:10px;white-space:nowrap;text-overflow:ellipsis;cursor:pointer;border:1px solid #ffffff33}
+.video{background:#2865b5}
+.text{background:#7546b3}
+.overlayblock{background:#088479}
+.audio{background:#596985}
+.effect{background:#a06b34}
+.selected{outline:2px solid white;outline-offset:-2px}
+.editor{border-top:1px solid #3a4762;padding:12px 0}
+.editorhead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.editorhead strong{font-size:13px}
+.chip{font-size:10px;border-radius:20px;background:#344563;padding:4px 7px}
+.hint{color:#adbed8;font-size:12px;line-height:1.55}
+.status{min-height:18px;color:#a6e4c1;font-size:12px}
+details{margin-top:10px}
+summary{cursor:pointer;color:#c8d7ff}
+@media(min-width:780px){
+main{grid-template-columns:1fr 1fr}
+.full{grid-column:1/-1}
 }
 </style>
 </head>
 <body>
 <header>
-  <h1>✦ CapCut AI Template Studio
-    <span class="pill">v1.0 • Prototype</span>
-  </h1>
-  <small>Generator blueprint editable untuk Creator Center iPhone</small>
+<h1>✦ CapCut AI Template Studio <small>v1.1</small></h1>
+<small>Safari iPhone • Timeline multilayer • Blueprint editable</small>
 </header>
-
 <main>
+
 <section class="panel">
-  <h2>1. Perintah Template</h2>
-  <label for="prompt">Deskripsi gaya editing</label>
-  <textarea id="prompt">Buat template travel cinematic 15 detik, 5 klip, teks My Trip My Adventure, overlay, transisi smooth, beat sync</textarea>
-  <div class="grid">
-    <div>
-      <label>Durasi (detik)</label>
-      <input id="duration" type="number" min="3" max="120" value="15">
-    </div>
-    <div>
-      <label>Jumlah klip</label>
-      <input id="count" type="number" min="1" max="20" value="5">
-    </div>
-    <div>
-      <label>Rasio</label>
-      <select id="ratio">
-        <option>9:16</option>
-        <option>16:9</option>
-        <option>1:1</option>
-      </select>
-    </div>
-    <div>
-      <label>Gaya</label>
-      <select id="style">
-        <option>Cinematic</option>
-        <option>Beat Sync</option>
-        <option>Minimal</option>
-        <option>Travel</option>
-      </select>
-    </div>
-  </div>
-  <div class="actions">
-    <button id="generate">✨ Susun Blueprint</button>
-    <button class="secondary" id="addText">+ Teks</button>
-    <button class="secondary" id="addOverlay">+ Overlay</button>
-  </div>
-  <p class="note">
-    Generator berbasis aturan kata kunci, bukan model AI online.
-    Semua hasil dapat diedit di bawah.
-  </p>
+<h2>1. Generator Template</h2>
+<label>Instruksi</label>
+<textarea id="prompt">Buat template travel cinematic 15 detik, 5 klip, teks My Trip My Adventure, overlay, transisi smooth, beat sync</textarea>
+<div class="grid">
+<div><label>Durasi (detik)</label><input id="duration" type="number" min="3" max="120" value="15"></div>
+<div><label>Jumlah klip</label><input id="count" type="number" min="1" max="20" value="5"></div>
+<div><label>Rasio</label><select id="ratio"><option>9:16</option><option>16:9</option><option>1:1</option></select></div>
+<div><label>Gaya</label><select id="style"><option>Cinematic</option><option>Beat Sync</option><option>Minimal</option><option>Travel</option></select></div>
+</div>
+<div class="buttons">
+<button id="generate">✨ Susun Blueprint</button>
+<button class="alt" id="addText">+ Teks</button>
+<button class="alt" id="addOverlay">+ Overlay</button>
+</div>
+<p class="hint">Generator berbasis aturan; belum terhubung ke model AI online. Menekan Susun Blueprint mengganti susunan sebelumnya.</p>
 </section>
 
 <section class="panel">
-  <h2>2. Preview & Media</h2>
-  <div id="preview" class="preview">
-    <div id="previewText" class="previewtext">
-      My Trip My Adventure
-    </div>
-    <div id="previewOverlay" class="previewoverlay">
-      OVERLAY
-    </div>
-  </div>
-  <label>Media contoh (foto/video dari iPhone)</label>
-  <input id="media" type="file" accept="image/*,video/*">
-  <div class="actions">
-    <button class="secondary" id="clearMedia">Hapus Media</button>
-  </div>
-  <p class="note">
-    Preview adalah mockup visual satu adegan;
-    bukan hasil render timeline atau efek CapCut asli.
-  </p>
+<h2>2. Media & Preview</h2>
+<div id="preview" class="preview"></div>
+<div class="playbar">
+<button id="play">▶</button>
+<input id="seek" aria-label="Geser waktu" type="range" min="0" max="15" step="0.05" value="0">
+<span id="time" class="time">0.0 / 15.0s</span>
+</div>
+<label>Tambahkan foto/video (boleh beberapa)</label>
+<input id="upload" type="file" accept="image/*,video/*" multiple>
+<p class="hint">Media diurutkan sesuai pilihan dan dipasangkan ke slot video; tambahan media bisa dipakai sebagai overlay melalui editor layer. Preview sederhana, bukan render efek CapCut.</p>
+<div id="mediaList" class="hint"></div>
 </section>
 
 <section class="panel full">
-  <h2>3. Timeline Multilayer</h2>
-  <div id="timeline"></div>
-  <p class="note">
-    Panjang segmen menunjukkan durasi relatif.
-    Teks, overlay, efek, dan audio tercatat sebagai layer terpisah.
-  </p>
+<h2>3. Timeline Interaktif</h2>
+<div id="timeline"></div>
+<p class="hint">Ketuk blok untuk mengedit layer. Posisi blok mengikuti waktu mulai dan durasi. Geser slider untuk melihat adegan.</p>
 </section>
 
 <section class="panel full">
-  <h2>4. Editable Slots & Pengaturan Layer</h2>
-  <div id="editors"></div>
+<h2>4. Editor Layer & Editable Slots</h2>
+<div id="editors"></div>
 </section>
 
 <section class="panel full">
-  <h2>5. Ekspor & Panduan Creator Center</h2>
-  <div class="actions">
-    <button id="exportJson">Unduh Blueprint JSON</button>
-    <button id="exportGuide" class="secondary">Unduh Panduan TXT</button>
-    <button id="exportAssets" class="secondary">Unduh Paket Aset ZIP</button>
-  </div>
-  <p class="note">
-    Paket ekspor berisi blueprint, panduan, dan media contoh.
-    Bukan proyek native CapCut. Buat proyek di CapCut,
-    lalu pilih elemen replaceable saat Posting sebagai template.
-  </p>
-  <div id="status" role="status" class="note"></div>
+<h2>5. Ekspor Blueprint</h2>
+<div class="buttons">
+<button id="json">Unduh JSON</button>
+<button class="alt" id="guide">Unduh Panduan TXT</button>
+<button class="alt" id="assets">Unduh Media Sumber</button>
+</div>
+<p class="hint">File JSON/TXT dan media sumber adalah bahan untuk menyusun proyek di CapCut iPhone. Ini bukan proyek CapCut native. Pengguna lain hanya dapat mengganti elemen yang diaktifkan saat publikasi melalui Creator Center.</p>
+<p id="status" class="status" role="status"></p>
 </section>
 </main>
 
-<footer>
-  Prototype lokal • Data diproses di browser • Tidak mengunggah video ke server
-</footer>
-
 <script>
-"use strict";
+'use strict';
 
-const $ = id => document.getElementById(id);
-let model = {
-  title:"My Cinematic Trip",
-  duration:15,
-  ratio:"9:16",
-  style:"Cinematic",
-  prompt:"",
-  layers:[]
+const $=id=>document.getElementById(id);
+let model={
+  duration:15,ratio:'9:16',
+  style:'Cinematic',prompt:'',layers:[]
 };
-let mediaFile=null,mediaUrl=null;
+let media=[],playhead=0,playing=false,last=0,raf=0,selected=null;
+const types=['video','text','overlay','effect','audio'];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({
+  '&':'&amp;','<':'&lt;','>':'&gt;',
+  '"':'&quot;',"'":'&#39;'
+}[c]));
+const uid=()=>Math.random().toString(36).slice(2,10);
+const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 
-function make(){
-  let d=Math.max(3,Math.min(120,+$("duration").value||15));
-  let n=Math.max(1,Math.min(20,+$("count").value||5));
-  let p=$("prompt").value;
-  let title=(p.match(/teks\s+["“]?([^,.\n"]+)/i)||[])[1]?.trim()
-    ||"My Trip My Adventure";
-  let hasOverlay=/overlay/i.test(p);
-  let hasAudio=/beat|musik|music|audio/i.test(p);
-
-  model={
-    title:"Template "+$("style").value,
-    duration:d,ratio:$("ratio").value,
-    style:$("style").value,prompt:p,layers:[]
-  };
-
-  for(let i=0;i<n;i++){
-    let start=+(i*d/n).toFixed(2);
-    let end=+((i+1)*d/n).toFixed(2);
-    model.layers.push({
-      id:"video-"+(i+1),
-      type:"video",name:"Klip "+(i+1),
-      start,duration:+(end-start).toFixed(2),
-      replaceable:true,
-      effect:i===0?"Fade In":"Smooth Zoom"
-    });
-  }
-
+function add(type,name,start,duration,replaceable,effect='None'){
   model.layers.push({
-    id:"text-1",type:"text",name:title,
-    start:0,duration:Math.min(d,5),
-    replaceable:true,effect:"Fade In"
+    id:uid(),type,name,start,duration,
+    replaceable,effect,mediaIndex:-1
   });
-
-  if(hasOverlay)model.layers.push({
-    id:"overlay-1",type:"overlay",name:"Overlay 1",
-    start:Math.min(2,d-1),
-    duration:Math.min(5,d-2),
-    replaceable:true,effect:"None"
-  });
-
-  if(hasAudio)model.layers.push({
-    id:"audio-1",type:"audio",
-    name:"Beat Sync (placeholder)",
-    start:0,duration:d,replaceable:false,
-    effect:"Beat markers manual"
-  });
-
-  model.layers.push({
-    id:"effect-1",type:"effect",
-    name:"Smooth transition",
-    start:0,duration:d,replaceable:false,
-    effect:"CapCut manual"
-  });
-  render();
 }
 
-function safe(s){
-  return String(s).replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",
-    '"':"&quot;","'":"&#39;"
-  }[c]));
+function generate(){
+  stop();
+  let d=clamp(+$('duration').value||15,3,120);
+  let n=clamp(+$('count').value||5,1,20);
+  let p=$('prompt').value;
+  model={
+    duration:d,ratio:$('ratio').value,
+    style:$('style').value,prompt:p,layers:[]
+  };
+  let title=(p.match(/teks\s+["“]?([^,.\n"]+)/i)||[])[1]?.trim()
+    ||'My Trip My Adventure';
+
+  for(let i=0;i<n;i++){
+    let a=+(i*d/n).toFixed(3);
+    let b=+((i+1)*d/n).toFixed(3);
+    add('video','Klip '+(i+1),a,+(b-a).toFixed(3),
+      true,i?'Smooth Zoom':'Fade In');
+    model.layers.at(-1).mediaIndex=i<media.length?i:-1;
+  }
+
+  add('text',title,0,Math.min(d,5),true,'Fade In');
+  if(/overlay/i.test(p))
+    add('overlay','Overlay 1',Math.min(2,d-1),Math.min(5,d-2),true);
+  if(/beat|musik|music|audio/i.test(p))
+    add('audio','Beat Sync (panduan)',0,d,false,
+      'Sinkronkan manual di CapCut');
+  add('effect','Transisi (panduan)',0,d,false,
+    'Smooth transition');
+
+  playhead=0;selected=null;render();
+}
+
+function active(l){
+  return playhead>=l.start&&playhead<l.start+l.duration;
+}
+
+function preview(){
+  const el=$('preview');
+  el.style.aspectRatio=model.ratio.replace(':','/');
+  el.innerHTML='';
+
+  const vids=model.layers.filter(l=>l.type==='video'&&active(l));
+  let v=vids.at(-1);
+
+  if(v&&media[v.mediaIndex]){
+    attach(el,media[v.mediaIndex],'asset');
+  }else{
+    let bg=document.createElement('div');
+    bg.style.cssText='position:absolute;inset:0;background:linear-gradient(145deg,#344c76,#19243b)';
+    el.append(bg);
+  }
+
+  for(let l of model.layers.filter(l=>l.type==='overlay'&&active(l))){
+    if(media[l.mediaIndex]){
+      attach(el,media[l.mediaIndex],'overlay');
+    }else{
+      let o=document.createElement('div');
+      o.className='overlay';
+      o.style.cssText='background:#008e8899;display:grid;place-items:center;font-size:11px';
+      o.textContent=l.name;
+      el.append(o);
+    }
+  }
+
+  for(let l of model.layers.filter(l=>l.type==='text'&&active(l))){
+    let t=document.createElement('div');
+    t.className='caption';
+    t.textContent=l.name;
+    el.append(t);
+  }
+
+  $('seek').max=model.duration;
+  $('seek').value=playhead;
+  $('time').textContent=playhead.toFixed(1)+' / '+
+    model.duration.toFixed(1)+'s';
+}
+
+function attach(el,m,cls){
+  let node=document.createElement(
+    m.file.type.startsWith('video/')?'video':'img'
+  );
+  node.className=cls;
+  node.src=m.url;
+
+  if(node.tagName==='VIDEO'){
+    node.muted=true;
+    node.playsInline=true;
+    node.preload='metadata';
+    node.currentTime=Math.max(0,
+      playhead%Math.max(0.1,m.duration||999));
+  }
+  el.append(node);
+}
+
+function timeline(){
+  const names={
+    video:'🎬 VIDEO',text:'🔤 TEKS',
+    overlay:'🟢 OVERLAY',effect:'✨ EFEK',
+    audio:'🎵 AUDIO'
+  };
+
+  $('timeline').innerHTML=types.map(type=>{
+    let layers=model.layers.filter(l=>l.type===type);
+    if(!layers.length)return '';
+    return '<div class="track"><div class="trackname">'+
+      names[type]+'</div><div class="trackline">'+
+      layers.map(l=>'<div class="block '+
+      (type==='overlay'?'overlayblock':type)+
+      (selected===l.id?' selected':'')+
+      '" data-id="'+l.id+'" style="left:'+
+      (100*l.start/model.duration)+'%;width:'+
+      (100*l.duration/model.duration)+'%">'+
+      esc(l.name)+'</div>').join('')+
+      '</div></div>';
+  }).join('');
+}
+
+function editors(){
+  let html='';
+
+  for(let l of model.layers){
+    html+='<div class="editor" id="editor-'+l.id+'">'+
+      '<div class="editorhead"><strong>'+
+      esc(l.type.toUpperCase())+' · '+esc(l.name)+
+      '</strong><span class="chip">'+
+      (l.replaceable?'Replaceable':'Fixed')+
+      '</span></div>'+
+      '<div class="grid"><div><label>Mulai (s)</label>'+
+      '<input data-id="'+l.id+'" data-k="start" type="number" step="0.1" min="0" value="'+l.start+'">'+
+      '</div><div><label>Durasi (s)</label>'+
+      '<input data-id="'+l.id+'" data-k="duration" type="number" step="0.1" min="0.1" value="'+l.duration+'">'+
+      '</div></div><label>Nama / teks</label>'+
+      '<input data-id="'+l.id+'" data-k="name" value="'+esc(l.name)+'">'+
+      '<label>Efek / catatan</label>'+
+      '<input data-id="'+l.id+'" data-k="effect" value="'+esc(l.effect)+'">';
+
+    if(l.type==='video'||l.type==='overlay'){
+      html+='<label>Media sumber</label>'+
+        '<select data-id="'+l.id+'" data-k="mediaIndex">'+
+        '<option value="-1">Placeholder</option>'+
+        media.map((m,i)=>'<option value="'+i+'" '+
+        (l.mediaIndex===i?'selected':'')+'>'+
+        esc(m.file.name)+'</option>').join('')+
+        '</select>';
+    }
+
+    html+='<label><input type="checkbox" data-id="'+
+      l.id+'" data-k="replaceable" '+
+      (l.replaceable?'checked':'')+
+      '> Dapat diganti di template</label>'+
+      '<div class="buttons"><button class="warn" data-remove="'+
+      l.id+'">Hapus layer</button></div></div>';
+  }
+
+  $('editors').innerHTML=html;
 }
 
 function render(){
-  let types=["video","text","overlay","effect","audio"];
-  let names={
-    video:"🎬 VIDEO",text:"🔤 TEKS",
-    overlay:"🟢 OVERLAY",effect:"✨ EFEK",
-    audio:"🎵 AUDIO"
-  };
-
-  $("timeline").innerHTML=types.map(type=>{
-    let a=model.layers.filter(x=>x.type===type);
-    if(!a.length)return "";
-    return `<div class="track">
-      <div class="trackhead">
-        <b>${names[type]}</b><span>${a.length} layer</span>
-      </div>
-      <div class="segments">
-        ${a.map(x=>`<div class="segment ${type}"
-          style="flex:${Math.max(.2,x.duration)}"
-          title="${safe(x.name)}">
-          ${safe(x.name)}<br>${x.duration}s
-        </div>`).join("")}
-      </div>
-    </div>`;
-  }).join("");
-
-  $("editors").innerHTML=model.layers.map((x,i)=>`
-    <div class="editorrow">
-      <strong>${safe(x.type.toUpperCase())} • ${safe(x.name)}</strong>
-      <label style="margin:0">
-        <input type="checkbox" data-i="${i}"
-          data-k="replaceable" ${x.replaceable?"checked":""}>
-        Bisa diganti
-      </label>
-      <div>
-        <label>Mulai (detik)</label>
-        <input type="number" min="0" max="${model.duration}"
-          step="0.1" data-i="${i}" data-k="start" value="${x.start}">
-      </div>
-      <div>
-        <label>Durasi (detik)</label>
-        <input type="number" min="0.1" max="${model.duration}"
-          step="0.1" data-i="${i}" data-k="duration" value="${x.duration}">
-      </div>
-      <div class="wide">
-        <label>Nama / teks</label>
-        <input data-i="${i}" data-k="name" value="${safe(x.name)}">
-      </div>
-      <div class="wide">
-        <label>Efek / catatan CapCut</label>
-        <input data-i="${i}" data-k="effect" value="${safe(x.effect)}">
-      </div>
-      <div class="wide">
-        <button class="danger" data-delete="${i}">Hapus layer</button>
-      </div>
-    </div>
-  `).join("");
-
-  $("previewText").textContent=
-    model.layers.find(x=>x.type==="text")?.name||"";
-  $("previewOverlay").style.display=
-    model.layers.some(x=>x.type==="overlay")?"block":"none";
-  let ratio=model.ratio.split(":").map(Number);
-  $("preview").style.aspectRatio=ratio[0]+"/"+ratio[1];
+  timeline();
+  editors();
+  preview();
+  $('mediaList').textContent=media.length?
+    media.map((m,i)=>(i+1)+'. '+m.file.name).join(' · '):
+    'Belum ada media.';
 }
 
-$("editors").addEventListener("change",e=>{
-  let t=e.target,i=+t.dataset.i,k=t.dataset.k;
-  if(!k)return;
-  let x=model.layers[i];
-  if(k==="replaceable")x[k]=t.checked;
-  else if(k==="start"||k==="duration"){
-    x[k]=Math.max(k==="duration"?.1:0,
-      Math.min(model.duration,Number(t.value)||0));
-    if(x.start+x.duration>model.duration)
-      x.duration=+(model.duration-x.start).toFixed(2);
-  }else x[k]=t.value;
-  render();
-});
+function stop(){
+  playing=false;
+  cancelAnimationFrame(raf);
+  $('play').textContent='▶';
+}
 
-$("editors").addEventListener("click",e=>{
-  let i=e.target.dataset.delete;
-  if(i!==undefined){
-    model.layers.splice(+i,1);
-    render();
+function tick(now){
+  if(!playing)return;
+  if(last)playhead+=Math.min(.1,(now-last)/1000);
+  last=now;
+
+  if(playhead>=model.duration){
+    playhead=model.duration;
+    stop();
   }
-});
+  preview();
+  if(playing)raf=requestAnimationFrame(tick);
+}
 
-$("generate").onclick=make;
+$('play').onclick=()=>{
+  if(playing){stop();return;}
+  if(playhead>=model.duration)playhead=0;
+  playing=true;
+  last=0;
+  $('play').textContent='❚❚';
+  raf=requestAnimationFrame(tick);
+};
 
-$("addText").onclick=()=>{
-  model.layers.push({
-    id:"text-"+Date.now(),type:"text",name:"Teks baru",
-    start:0,duration:Math.min(3,model.duration),
-    replaceable:true,effect:"Fade In"
+$('seek').oninput=e=>{
+  playhead=+e.target.value;
+  preview();
+};
+
+$('generate').onclick=generate;
+
+$('addText').onclick=()=>{
+  add('text','Teks baru',playhead,
+    Math.min(3,model.duration-playhead)||.1,
+    true,'Fade In');
+  render();
+};
+
+$('addOverlay').onclick=()=>{
+  add('overlay','Overlay baru',playhead,
+    Math.min(3,model.duration-playhead)||.1,true);
+  render();
+};
+
+$('upload').onchange=e=>{
+  for(let f of e.target.files){
+    if(media.length>=30)break;
+    media.push({
+      file:f,url:URL.createObjectURL(f),duration:null
+    });
+  }
+  model.layers.filter(l=>l.type==='video').forEach((l,i)=>{
+    if(l.mediaIndex<0&&i<media.length)l.mediaIndex=i;
   });
   render();
 };
 
-$("addOverlay").onclick=()=>{
-  model.layers.push({
-    id:"overlay-"+Date.now(),type:"overlay",
-    name:"Overlay baru",start:0,
-    duration:Math.min(3,model.duration),
-    replaceable:true,effect:"None"
-  });
+$('timeline').onclick=e=>{
+  let b=e.target.closest('[data-id]');
+  if(!b)return;
+  selected=b.dataset.id;
+  timeline();
+  document.getElementById('editor-'+selected)
+    ?.scrollIntoView({behavior:'smooth',block:'center'});
+};
+
+$('editors').onchange=e=>{
+  let t=e.target;
+  let l=model.layers.find(x=>x.id===t.dataset.id);
+  let k=t.dataset.k;
+  if(!l||!k)return;
+
+  if(k==='replaceable'){
+    l[k]=t.checked;
+  }else if(k==='start'){
+    l.start=clamp(Number(t.value)||0,0,model.duration-.1);
+    l.duration=Math.min(l.duration,model.duration-l.start);
+  }else if(k==='duration'){
+    l.duration=clamp(Number(t.value)||.1,.1,
+      model.duration-l.start);
+  }else if(k==='mediaIndex'){
+    l.mediaIndex=+t.value;
+  }else{
+    l[k]=t.value;
+  }
   render();
 };
 
-$("media").onchange=e=>{
-  if(mediaUrl)URL.revokeObjectURL(mediaUrl);
-  mediaFile=e.target.files[0]||null;
-  if(!mediaFile)return;
-  mediaUrl=URL.createObjectURL(mediaFile);
-  let el=document.createElement(
-    mediaFile.type.startsWith("video/")?"video":"img"
-  );
-  el.src=mediaUrl;
-  if(el.tagName==="VIDEO"){
-    el.muted=true;el.loop=true;
-    el.playsInline=true;el.autoplay=true;el.controls=true;
-    el.play().catch(()=>{});
-  }
-  let old=$("preview").querySelector("video,img");
-  if(old)old.remove();
-  $("preview").prepend(el);
+$('editors').onclick=e=>{
+  let id=e.target.dataset.remove;
+  if(!id)return;
+  model.layers=model.layers.filter(l=>l.id!==id);
+  render();
 };
 
-$("clearMedia").onclick=()=>{
-  mediaFile=null;$("media").value="";
-  let el=$("preview").querySelector("video,img");
-  if(el)el.remove();
-  if(mediaUrl)URL.revokeObjectURL(mediaUrl);
-  mediaUrl=null;
-};
-
-function json(){
+function blueprint(){
   return JSON.stringify({
-    schema:"capcut-template-blueprint-v1",
-    disclaimer:"Not a native CapCut project",
+    schema:'capcut-blueprint-v1.1',
+    nativeCapCutProject:false,
     createdAt:new Date().toISOString(),
-    ...model
+    ...model,
+    media:media.map((m,i)=>({
+      index:i,name:m.file.name,type:m.file.type
+    }))
   },null,2);
 }
 
 function guide(){
-  return `CAPCUT AI TEMPLATE STUDIO v1.0
-${model.title}
-Durasi: ${model.duration}s | Rasio: ${model.ratio}
-
-LANGKAH:
-1. Buka CapCut iPhone, buat proyek baru dengan media contoh.
-2. Susun layer menurut daftar di bawah.
-3. Terapkan efek dan animasi manual di CapCut.
-4. Posting sebagai template -> Edit lainnya.
-5. Centang klip, teks, dan overlay yang ditandai replaceable.
-6. Tekan Uji, ganti media/teks dan cek hasil sebelum publikasi.
-
-LAYER:
-${model.layers.map(x=>`${x.type.toUpperCase()}: ${x.name} | mulai ${x.start}s | durasi ${x.duration}s | replaceable ${x.replaceable?"YA":"TIDAK"} | ${x.effect}`).join("\n")}
-
-CATATAN: Paket ini bukan proyek native CapCut dan tidak bisa langsung diimpor sebagai timeline editable.
-`;
+  return 'CAPCUT AI TEMPLATE STUDIO v1.1\n\n'+
+    'Durasi: '+model.duration+' detik | Rasio: '+
+    model.ratio+'\n\n'+
+    'Buat proyek baru di CapCut iPhone. Tambahkan media dan layer sesuai waktu berikut. Atur efek secara manual. Pada Posting sebagai template, centang video, teks, dan overlay dengan replaceable=YA. Uji semua slot sebelum publikasi.\n\n'+
+    model.layers.map(l=>
+      l.type.toUpperCase()+' | '+l.name+' | '+
+      l.start+'s - '+(l.start+l.duration).toFixed(2)+
+      's | '+(l.replaceable?'YA':'TIDAK')+
+      ' | '+l.effect
+    ).join('\n')+
+    '\n\nIni bukan file proyek CapCut native.';
 }
 
 function download(name,blob){
   let url=URL.createObjectURL(blob);
-  let a=document.createElement("a");
-  a.href=url;a.download=name;
-  document.body.append(a);a.click();a.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),10000);
+  let a=document.createElement('a');
+  a.href=url;
+  a.download=name;
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),15000);
 }
 
-$("exportJson").onclick=()=>download(
-  "blueprint.json",
-  new Blob([json()],{type:"application/json"})
+$('json').onclick=()=>download(
+  'capcut-blueprint-v1.1.json',
+  new Blob([blueprint()],{type:'application/json'})
 );
 
-$("exportGuide").onclick=()=>download(
-  "panduan-capcut.txt",
-  new Blob([guide()],{type:"text/plain"})
+$('guide').onclick=()=>download(
+  'panduan-capcut-v1.1.txt',
+  new Blob([guide()],{type:'text/plain'})
 );
 
-// ZIP writer tanpa library eksternal
-const crcTable=(()=>{
-  let t=[];
-  for(let n=0;n<256;n++){
-    let c=n;
-    for(let k=0;k<8;k++)
-      c=c&1?0xedb88320^(c>>>1):c>>>1;
-    t[n]=c>>>0;
+$('assets').onclick=()=>{
+  if(!media.length){
+    $('status').textContent='Belum ada media untuk diunduh.';
+    return;
   }
-  return t;
-})();
-
-function crc32(b){
-  let c=0xffffffff;
-  for(let x of b)
-    c=crcTable[(c^x)&255]^(c>>>8);
-  return(c^0xffffffff)>>>0;
-}
-
-function zip(files){
-  let enc=new TextEncoder(),local=[],central=[],offset=0;
-  for(let f of files){
-    let name=enc.encode(f.name),data=f.data,crc=crc32(data);
-    let lh=new Uint8Array(30+name.length);
-    let v=new DataView(lh.buffer);
-    v.setUint32(0,0x04034b50,true);
-    v.setUint16(4,20,true);
-    v.setUint16(8,0,true);
-    v.setUint32(14,crc,true);
-    v.setUint32(18,data.length,true);
-    v.setUint32(22,data.length,true);
-    v.setUint16(26,name.length,true);
-    lh.set(name,30);
-    local.push(lh,data);
-
-    let ch=new Uint8Array(46+name.length);
-    let w=new DataView(ch.buffer);
-    w.setUint32(0,0x02014b50,true);
-    w.setUint16(4,20,true);
-    w.setUint16(6,20,true);
-    w.setUint32(16,crc,true);
-    w.setUint32(20,data.length,true);
-    w.setUint32(24,data.length,true);
-    w.setUint16(28,name.length,true);
-    w.setUint32(42,offset,true);
-    ch.set(name,46);
-    central.push(ch);
-    offset+=lh.length+data.length;
-  }
-  let centralSize=central.reduce((n,a)=>n+a.length,0);
-  let end=new Uint8Array(22),v=new DataView(end.buffer);
-  v.setUint32(0,0x06054b50,true);
-  v.setUint16(8,files.length,true);
-  v.setUint16(10,files.length,true);
-  v.setUint32(12,centralSize,true);
-  v.setUint32(16,offset,true);
-  return new Blob([...local,...central,end],{
-    type:"application/zip"
-  });
-}
-
-$("exportAssets").onclick=async()=>{
-  let files=[
-    {
-      name:"blueprint.json",
-      data:new TextEncoder().encode(json())
-    },
-    {
-      name:"panduan-capcut.txt",
-      data:new TextEncoder().encode(guide())
-    }
-  ];
-  if(mediaFile){
-    files.push({
-      name:"assets/"+mediaFile.name.replace(/[^a-zA-Z0-9._-]/g,"_"),
-      data:new Uint8Array(await mediaFile.arrayBuffer())
-    });
-  }
-  download("capcut-template-package.zip",zip(files));
-  $("status").textContent=
-    "Paket berhasil disiapkan. Periksa Downloads di Safari.";
+  for(let m of media)download(m.file.name,m.file);
+  $('status').textContent=
+    'Unduhan media dimulai. Safari mungkin meminta izin untuk beberapa file.';
 };
 
-make();
+generate();
 </script>
 </body>
 </html>
